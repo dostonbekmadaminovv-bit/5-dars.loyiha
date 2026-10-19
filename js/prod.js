@@ -18,6 +18,11 @@ function data2(arr) {
             <p>Price: $${prod.price}</p>
             <p>Description: ${prod.description}</p>
             <p>Discount:${prod.discount}<p>
+            <div class="counter">
+        <button class="counter-btn minus" data-id="${prod.id}" type="button">−</button>
+        <span class="counter-value" id="count-${prod.id}">0</span>
+        <button class="counter-btn plus" data-id="${prod.id}" type="button">+</button>
+      </div>
           </div>
         `;
   });
@@ -37,4 +42,20 @@ formEl.addEventListener("submit", (e) => {
 
   data2(filteredProducts);
   // buttonEl.textContent = productName;
+});
+const counts = {};
+
+productWrapper.addEventListener("click", (event) => {
+  const button = event.target.closest(".counter-btn");
+  if (!button) return;
+
+  const id = button.dataset.id;
+
+  if (button.classList.contains("plus")) {
+    counts[id] = (counts[id] || 0) + 1;
+  } else if (button.classList.contains("minus")) {
+    counts[id] = Math.max((counts[id] || 0) - 1, 0);
+  }
+
+  document.querySelector(`#count-${id}`).textContent = counts[id];
 });

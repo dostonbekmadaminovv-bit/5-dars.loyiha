@@ -3,85 +3,110 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 a {
   text-decoration: none;
 }
+
 body {
-  margin: 0;
   background: #f3f4f6;
   color: #1f2937;
   font-family: Arial, sans-serif;
 }
+
 nav {
-  padding-top: 20px;
-  padding-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
+
 .links {
   display: flex;
   align-items: center;
   gap: 35px;
 }
+
 .link {
+  color: #1f2937;
   font-size: 20px;
   font-weight: bold;
 }
+
 .container {
   width: 100%;
   max-width: 1320px;
-  margin-left: auto;
   margin-right: auto;
-  padding-left: 20px;
+  margin-left: auto;
   padding-right: 20px;
+  padding-left: 20px;
 }
+
+/* Qidiruv formasi */
 form {
   display: flex;
   align-items: center;
-  border: none;
-  border-radius: 15px;
-  gap: 20px;
+  justify-content: center;
+  gap: 12px;
+  width: min(700px, 100%);
+  margin: 25px auto;
 }
+
 input {
-  display: flex;
-  margin-left: 360px;
-  margin-top: auto;
-  align-items: center;
-  width: 500px;
-  border-radius: 16px;
-  border: none;
-  background-color: rgb(76, 63, 63);
-  color: white;
-  padding: 10px 15px;
+  width: 100%;
+  min-width: 0;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  outline: none;
+  background: #fff;
+  color: #1f2937;
+  font-size: 16px;
 }
+
+input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgb(79 70 229 / 15%);
+}
+
 .search {
-  display: flex;
-  background-color: rgb(41, 43, 48);
-  color: white;
-  padding: 10px 15px;
-  width: 100px;
-  border-radius: 16px;
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 12px;
+  background: #292b30;
+  color: #fff;
+  font-size: 15px;
   cursor: pointer;
+  transition: background 0.2s ease;
 }
+
 .search:hover {
-  background-color: red;
+  background: #4f46e5;
 }
+
+/* Mahsulotlar ro‘yxati */
 .product-wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  align-items: stretch;
   gap: 20px;
-
+  width: 100%;
+  max-width: 1320px;
   margin: 30px auto;
+  padding: 0 20px;
 }
 
+/* Mahsulot kartasi */
 .product {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 18px;
   overflow: hidden;
-  max-width: 300px;
-  padding: 16px;
-  background: #fff;
   border: 1px solid #e5e7eb;
   border-radius: 16px;
+  background: #fff;
   box-shadow: 0 5px 16px rgb(0 0 0 / 7%);
   transition:
     transform 0.2s ease,
@@ -97,26 +122,116 @@ input {
   display: block;
   width: 100%;
   height: 190px;
+  border-radius: 12px;
+  background: #e5e7eb;
   object-fit: cover;
-  border-radius: 10px;
 }
 
 .product h2 {
   margin: 14px 0 10px;
   color: #111827;
   font-size: 18px;
+  line-height: 1.4;
 }
 
 .product p {
-  margin: 8px 0;
+  margin: 5px 0;
   color: #4b5563;
   font-size: 14px;
+  font-weight: 500;
   line-height: 1.5;
+}
+
+/* Pastki qator va ajratuvchi chiziq */
+.product-bottom {
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.product-bottom hr {
+  margin-bottom: 14px;
+  border: 0;
+  border-top: 1px solid #e5e7eb;
+}
+
+.product-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.price {
+  flex-shrink: 0;
+  color: #2563eb;
+  font-size: 20px;
   font-weight: bold;
 }
 
-.product p:nth-of-type(3) {
-  color: #2563eb;
-  font-size: 17px;
+/* Miqdor tugmalari */
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.counter-btn {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 0;
+  border-radius: 8px;
+  background: #4f46e5;
+  color: #fff;
+  font-size: 21px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.counter-btn:hover {
+  background: #3730a3;
+}
+
+.counter-value {
+  min-width: 20px;
+  color: #1f2937;
+  font-size: 16px;
   font-weight: 700;
+  text-align: center;
+}
+
+/* Telefon ekraniga moslash */
+@media (max-width: 600px) {
+  .container {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  nav {
+    gap: 15px;
+  }
+
+  .links {
+    gap: 16px;
+  }
+
+  .link {
+    font-size: 16px;
+  }
+
+  form {
+    gap: 8px;
+    padding: 0 14px;
+  }
+
+  .search {
+    padding: 12px;
+  }
+
+  .product-wrapper {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    padding: 0 14px;
+  }
 }
